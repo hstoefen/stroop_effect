@@ -11781,7 +11781,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
@@ -11800,7 +11800,7 @@ div#notebook {
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[16]:</div>
+<div class="prompt output_prompt">Out[1]:</div>
 
 
 
@@ -11878,6 +11878,8 @@ div#notebook {
 <p><a href="http://www.wikipedia.org">Wikipedia</a></p>
 <p><a href="http://www.stackoverflow.com">stackoverflow</a></p>
 <p><a href="https://faculty.washington.edu/chudler/words.html#seffect">Stroop Effect</a></p>
+<p><a href="http://influentialpoints.com/Training/paired_t-test-principles-properties-assumptions.htm">Paired t-test</a></p>
+<p><a href="http://www2.psychology.uiowa.edu/faculty/mordkoff/GradStats/part%201/I.07%20normal.pdf">Assumption of Normality</a></p>
 
 </div>
 </div>
@@ -11897,17 +11899,21 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Hypothesis-Tests---Question-2">Hypothesis Tests - Question 2<a class="anchor-link" href="#Hypothesis-Tests---Question-2">&#182;</a></h1><p>The null hypothesis used is:<br></p>
-<blockquote><p>H<sub>0</sub>: Both tests, with congruent colors and incongruent colors take the same average time to answer<br>
-<br>
-µ<sub>congruent</sub> $=$ µ<sub>incongruent</sub><br>
+<blockquote><p>H<sub>0</sub>: Both tests, with congruent colors and incongruent colors take the same average time to answer</p>
+</blockquote>
+<p>This corresponds to</p>
+<blockquote><p>µ<sub>congruent</sub> $=$ µ<sub>incongruent</sub><br>
 or µ<sub>delta</sub> $=$ 0</p>
 </blockquote>
+<p>where µ<sub>x</sub> is the respective population mean</p>
 <p>The alternative hypothesis is:</p>
-<blockquote><p>H<sub>a</sub>: The test with incongruent colors takes a different average time to answer<br>
-<br>
-µ<sub>congruent</sub> $\neq$ µ<sub>incongruent</sub><br>
+<blockquote><p>H<sub>a</sub>: The test with incongruent colors takes a different average time to answer</p>
+</blockquote>
+<p>This corresponds to</p>
+<blockquote><p>µ<sub>congruent</sub> $\neq$ µ<sub>incongruent</sub><br>
 or µ<sub>delta</sub> $\neq$ 0</p>
 </blockquote>
+<p>where µ<sub>x</sub> is the respective population mean</p>
 
 </div>
 </div>
@@ -11919,6 +11925,21 @@ or µ<sub>delta</sub> $\neq$ 0</p>
 <p>We have a small sample size and the population parameters are unknown. Hence, we can't compute the z-statistic. I will use the t-statistic instead. Intuition suggests, that the average time to answer the incongruent test should be longer, than the average time taken for the congruent test. However, as we can't be certain, that this is the case, a two-tailed t-test is chosen. There are two dependent samples, for the congruent and the incongruent test. Therefore, I conduct a <br></p>
 <blockquote><p>two tailed dependent t-test for paired samples</p>
 </blockquote>
+<p>The following assumptions are made for this kind of test:</p>
+<ol>
+<li>The differences of the means are taken from measured (analogue) values<ul>
+<li>In our case is true, because we compare time differences measured in seconds</li>
+</ul>
+</li>
+<li>Sampling is random and pairs of observation are independent<ul>
+<li>This can be assumed, since the test is taken online, without the participants being normally influenced by each other</li>
+</ul>
+</li>
+<li>The distribution of mean differences across samples is normal<ul>
+<li>According to the Central Limit Theorem, the distribution of the sample means approaches a normal distribution for a large sample size</li>
+</ul>
+</li>
+</ol>
 
 </div>
 </div>
@@ -11933,7 +11954,7 @@ or µ<sub>delta</sub> $\neq$ 0</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[22]:</div>
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="n">s</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
@@ -11949,7 +11970,7 @@ or µ<sub>delta</sub> $\neq$ 0</p>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[22]:</div>
+<div class="prompt output_prompt">Out[2]:</div>
 
 
 
@@ -12056,7 +12077,7 @@ or µ<sub>delta</sub> $\neq$ 0</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[29]:</div>
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="n">s</span><span class="o">.</span><span class="n">hist</span><span class="p">()</span>
@@ -12072,16 +12093,16 @@ or µ<sub>delta</sub> $\neq$ 0</p>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[29]:</div>
+<div class="prompt output_prompt">Out[7]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>array([[&lt;matplotlib.axes._subplots.AxesSubplot object at 0x000000000CBAE828&gt;,
-        &lt;matplotlib.axes._subplots.AxesSubplot object at 0x000000000C8D7E80&gt;],
-       [&lt;matplotlib.axes._subplots.AxesSubplot object at 0x000000000C82F198&gt;,
-        &lt;matplotlib.axes._subplots.AxesSubplot object at 0x000000000C8AB5C0&gt;]], dtype=object)</pre>
+<pre>array([[&lt;matplotlib.axes._subplots.AxesSubplot object at 0x000000000A9DB128&gt;,
+        &lt;matplotlib.axes._subplots.AxesSubplot object at 0x000000000AA855F8&gt;],
+       [&lt;matplotlib.axes._subplots.AxesSubplot object at 0x000000000AAB9D68&gt;,
+        &lt;matplotlib.axes._subplots.AxesSubplot object at 0x000000000AB7D518&gt;]], dtype=object)</pre>
 </div>
 
 </div>
@@ -12109,14 +12130,16 @@ or µ<sub>delta</sub> $\neq$ 0</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The plots above show the histograms for the times taken by participants of the Stroop test in seconds, when being shown congruent colors, incongruent colors and the difference between both times (Delta). Unlike the expectation for a high number of samples, the distributions are anything but normal. This is most probably due to the low number of samples (24). All distributions are positively skewed, with values as shown in the cell below:</p>
+<p>The plots above show the histograms for the times taken by participants of the Stroop test in seconds, when being shown congruent colors and incongruent colors as well as the difference between both times (Delta). Unlike the expectation for a high number of samples, the distributions are anything but normal. All distributions are positively skewed, with values as shown in the cell below.</p>
+<p>When increasing the sample size, the distribution of the differences should approach a normal distribution, even if the individual populations for the congruent and the incongruent tests are not normally distributed.</p>
+<p>In any case, this does not violate our assumption 3 from chapter 4, because we assume that the mean differences across all samples are normally distributed and not the individual differences in one sample.</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[21]:</div>
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="n">s</span><span class="o">.</span><span class="n">skew</span><span class="p">()</span>
@@ -12132,7 +12155,7 @@ or µ<sub>delta</sub> $\neq$ 0</p>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[21]:</div>
+<div class="prompt output_prompt">Out[4]:</div>
 
 
 
@@ -12176,7 +12199,7 @@ dtype: float64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[47]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># determine all necessary sample parameters in order to calculate the t-statistic and Cohen&#39;s D and r squared</span>
@@ -12240,7 +12263,7 @@ r squared: 0.74
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[53]:</div>
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># define alpha level</span>
